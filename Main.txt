@@ -30,10 +30,14 @@ public class Main {
 		int[] Type = new int[vot.length];
 		br: for (int i = 0; i < vot.length; i++) {
 			for (int j = 0; j < vot[i].length; j++) {
-				if (vot[i][j] != 0) {
+				if (vot[i][j] != 0&&vot[i][j]!='.') {
 					Type[i] = vot[i][j];
 					continue br;
 
+				}else 
+				{
+					Type[i]=0;
+					
 				}
 			}
 		}
@@ -102,7 +106,11 @@ public class Main {
 		int curr = vote.get(0);
 		while (currSize < vote.size()) {
 			if (curr == vote.get(currSize)) {
+				if(vote.get(currSize)==0) {
+				eq[s1][s2] = '.';
+				}else {
 				eq[s1][s2] = vote.get(currSize);
+				}
 				currSize++;
 				s2++;
 			} else {
@@ -112,6 +120,7 @@ public class Main {
 				curr = vote.get(currSize);
 			}
 		}
+	
 
 		return eq;
 
