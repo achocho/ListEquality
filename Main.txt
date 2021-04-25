@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
+       
 		List<Vote> votes = new ArrayList<>();
 
 		Scanner sc1 = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class Main {
 		int[] Type = new int[vot.length];
 		br: for (int i = 0; i < vot.length; i++) {
 			for (int j = 0; j < vot[i].length; j++) {
-				if (vot[i][j] != 0&&vot[i][j]!='.') {
+				if (vot[i][j] != 0&&vot[i][j]!=1985402785) {
 					Type[i] = vot[i][j];
 					continue br;
 
@@ -107,7 +108,7 @@ public class Main {
 		while (currSize < vote.size()) {
 			if (curr == vote.get(currSize)) {
 				if(vote.get(currSize)==0) {
-				eq[s1][s2] = '.';
+				eq[s1][s2] = 1985402785;
 				}else {
 				eq[s1][s2] = vote.get(currSize);
 				}
