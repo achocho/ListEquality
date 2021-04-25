@@ -1,0 +1,120 @@
+package voting;
+
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List<Vote> votes = new ArrayList<>();
+
+		Scanner sc1 = new Scanner(System.in);
+		boolean Form = true;
+		while (Form) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter name!");
+
+			String name = sc.nextLine();
+			System.out.println("Enter Egn!");
+			String Egn = sc.nextLine();
+			System.out.println("Enter vote!");
+			int vote = sc.nextInt();
+			votes.add(new Vote(name, Egn, vote));
+			System.out.println("Do you want to exit?");
+			String exit = sc1.nextLine();
+			if (exit.equalsIgnoreCase("yes")) {
+				Form = false;
+			}
+		}
+		int[][] vot = Votes(votes);
+
+		int[] Type = new int[vot.length];
+		br: for (int i = 0; i < vot.length; i++) {
+			for (int j = 0; j < vot[i].length; j++) {
+				if (vot[i][j] != 0) {
+					Type[i] = vot[i][j];
+					continue br;
+
+				}
+			}
+		}
+		int[] len = new int[vot.length];
+		int length = 0;
+		for (int i = 0; i < vot.length; i++) {
+			for (int j = 0; j < vot[i].length; j++) {
+				if (vot[i][j] != 0) {
+					length++;
+
+				}
+
+			}
+			len[i] = length;
+			length = 0;
+		}
+		System.out.println("Voted for :");
+		for (int i = 0; i < len.length; i++) {
+			if (len[i] != 1) {
+				System.out.println("Option " + Type[i] + ": " + len[i] + " persons");
+			} else {
+				System.out.println("Option " + Type[i] + ": " + len[i] + " person");
+
+			}
+			System.out.println();
+		}
+	}
+
+	public static int[][] Votes(List<Vote> list) {
+		List<Integer> vote = new ArrayList<>();
+
+		for (int i = 0; i < list.size(); i++) {
+			vote.add(list.get(i).getVote());
+
+		}
+		int buff = 0;
+		for (int i = 0; i < vote.size() - 1; i++) {
+			for (int j = 0; j < vote.size() - 1; j++) {
+				int vote1 = vote.get(j);
+				int vote2 = vote.get(j + 1);
+				if (vote1 > vote2) {
+					buff = vote1;
+					vote.set(j, vote2);
+					vote.set(j + 1, buff);
+
+				}
+
+			}
+
+		}
+
+		int size = 1;
+		for (int i = 0; i < vote.size() - 1; i++) {
+
+			if (vote.get(i) != vote.get(i + 1)) {
+				size++;
+
+			}
+
+		}
+
+		int currSize = 0;
+		int[][] eq = new int[size][vote.size()];
+		int s1 = 0;
+		int s2 = 0;
+		int curr = vote.get(0);
+		while (currSize < vote.size()) {
+			if (curr == vote.get(currSize)) {
+				eq[s1][s2] = vote.get(currSize);
+				currSize++;
+				s2++;
+			} else {
+				s2 = 0;
+				s1++;
+
+				curr = vote.get(currSize);
+			}
+		}
+
+		return eq;
+
+	}
+
+}
