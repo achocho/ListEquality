@@ -10,11 +10,6 @@ public class Main {
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
-	votes.add(new Vote("","",0));
-	votes.add(new Vote("","",0));
-	votes.add(new Vote("","",0));
-	votes.add(new Vote("","",0));
-	votes.add(new Vote("","",0));
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
