@@ -10,6 +10,11 @@ public class Main {
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
+	votes.add(new Vote("","",0));
+	votes.add(new Vote("","",0));
+	votes.add(new Vote("","",0));
+	votes.add(new Vote("","",0));
+	votes.add(new Vote("","",0));
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -19,19 +24,25 @@ public class Main {
 			String Egn = sc.nextLine();
 			System.out.println("Enter vote!");
 			int vote = sc.nextInt();
+			if(vote<0) 
+			{
+				System.out.println("Vote can not be less than zero");
+				continue;
+			}
 			votes.add(new Vote(name, Egn, vote));
 			System.out.println("Do you want to exit?");
 			String exit = sc1.nextLine();
 			if (exit.equalsIgnoreCase("yes")) {
 				Form = false;
 			}
-		}
+			}
+			
 		int[][] vot = Votes(votes);
 
 		int[] Type = new int[vot.length];
 		br: for (int i = 0; i < vot.length; i++) {
 			for (int j = 0; j < vot[i].length; j++) {
-				if (vot[i][j] != 0&&vot[i][j]!=1985402785) {
+				if (vot[i][j] != 0&&vot[i][j]!=-1985402785) {
 					Type[i] = vot[i][j];
 					continue br;
 
@@ -108,7 +119,7 @@ public class Main {
 		while (currSize < vote.size()) {
 			if (curr == vote.get(currSize)) {
 				if(vote.get(currSize)==0) {
-				eq[s1][s2] = 1985402785;
+				eq[s1][s2] = -1985402785;
 				}else {
 				eq[s1][s2] = vote.get(currSize);
 				}
