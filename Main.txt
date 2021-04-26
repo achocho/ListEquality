@@ -8,10 +8,9 @@ public class Main {
 
 		List<Vote> votes = new ArrayList<>();
 
-
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
-	
+
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -29,36 +28,24 @@ public class Main {
 			}
 		}
 
-		
-	
-		
-		
 		int[][] vot = Votes(votes);
 
 		int[] Type = new int[vot.length];
-		 for (int i = 0; i < vot.length; i++) {
-			
-				
-					Type[i] = vot[i][0];
-				
+		for (int i = 0; i < vot.length; i++) {
 
-				
-			
+			Type[i] = vot[i][0];
+
 		}
 		int[] len = new int[vot.length];
-		
+
 		for (int i = 0; i < vot.length; i++) {
-		
-			
-				len[i]=vot[i].length;
 
-				
+			len[i] = vot[i].length;
 
-			
-		
 		}
-		System.out.println("--------------------------------");
+
 		System.out.println("Voted for :");
+		System.out.println();
 		System.out.println("--------------------------------");
 		for (int i = 0; i < len.length; i++) {
 			if (len[i] != 1) {
@@ -104,44 +91,37 @@ public class Main {
 			}
 
 		}
-int size1=0;
-int temCurr=vote.get(0);
-int temSize=0;
-int[] sizes=new int[size];
-int s3=0;
-while(temSize<vote.size()) 
-{
-if(temCurr==vote.get(temSize)) 
-{
-	temSize++;
-	size1++;
-	sizes[s3]=size1;
-}
-else 
-{
-size1=0;
-s3++;
-temCurr=vote.get(temSize);
-}
-}
+		int size1 = 0;
+		int temCurr = vote.get(0);
+		int temSize = 0;
+		int[] sizes = new int[size];
+		int s3 = 0;
+		while (temSize < vote.size()) {
+			if (temCurr == vote.get(temSize)) {
+				temSize++;
+				size1++;
+				sizes[s3] = size1;
+			} else {
+				size1 = 0;
+				s3++;
+				temCurr = vote.get(temSize);
+			}
+		}
 
 		int currSize = 0;
 		int[][] eq = new int[size][];
-		for(int i=0;i<eq.length;i++) 
-		{
-			eq[i]=new int[sizes[i]];
-			
+		for (int i = 0; i < eq.length; i++) {
+			eq[i] = new int[sizes[i]];
+
 		}
 		int s1 = 0;
 		int s2 = 0;
 		int curr = vote.get(0);
 		while (currSize < vote.size()) {
 			if (curr == vote.get(currSize)) {
-				
-					
-			
-					eq[s1][s2] = vote.get(currSize);
-				
+
+				eq[s1][s2] = vote.get(currSize);
+
 				currSize++;
 				s2++;
 			} else {
