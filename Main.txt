@@ -21,10 +21,6 @@ public class Main {
 			String Egn = sc.nextLine();
 			System.out.println("Enter vote!");
 			int vote = sc.nextInt();
-			if (vote < 0) {
-				System.out.println("Vote can not be less than zero");
-				continue;
-			}
 			votes.add(new Vote(name, Egn, vote));
 			System.out.println("Do you want to exit?");
 			String exit = sc1.nextLine();
@@ -33,6 +29,7 @@ public class Main {
 			}
 		}
 
+		
 		
 		int[][] vot = Votes(votes);
 
@@ -59,7 +56,9 @@ public class Main {
 			len[i] = length;
 			length = 0;
 		}
+		System.out.println("--------------------------------");
 		System.out.println("Voted for :");
+		System.out.println("--------------------------------");
 		for (int i = 0; i < len.length; i++) {
 			if (len[i] != 1) {
 				System.out.println("Option " + Type[i] + ": " + len[i] + " persons");
@@ -67,9 +66,9 @@ public class Main {
 				System.out.println("Option " + Type[i] + ": " + len[i] + " person");
 
 			}
-			System.out.println();
+			System.out.println("--------------------------------");
 		}
-	//Votes(votes);
+
 	}
 
 	public static int[][] Votes(List<Vote> list) {
