@@ -5,11 +5,13 @@ import java.util.*;
 public class Main {
 
 	public static void main(String[] args) {
-       
+
 		List<Vote> votes = new ArrayList<>();
+
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
+		
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -19,8 +21,7 @@ public class Main {
 			String Egn = sc.nextLine();
 			System.out.println("Enter vote!");
 			int vote = sc.nextInt();
-			if(vote<0) 
-			{
+			if (vote < 0) {
 				System.out.println("Vote can not be less than zero");
 				continue;
 			}
@@ -30,32 +31,29 @@ public class Main {
 			if (exit.equalsIgnoreCase("yes")) {
 				Form = false;
 			}
-			}
-			
+		}
+
+		
 		int[][] vot = Votes(votes);
 
 		int[] Type = new int[vot.length];
 		br: for (int i = 0; i < vot.length; i++) {
 			for (int j = 0; j < vot[i].length; j++) {
-				if (vot[i][j] != 0&&vot[i][j]!=-1985402785) {
+				
 					Type[i] = vot[i][j];
 					continue br;
 
-				}else 
-				{
-					Type[i]=0;
-					
-				}
+				
 			}
 		}
 		int[] len = new int[vot.length];
 		int length = 0;
 		for (int i = 0; i < vot.length; i++) {
 			for (int j = 0; j < vot[i].length; j++) {
-				if (vot[i][j] != 0) {
+			
 					length++;
 
-				}
+				
 
 			}
 			len[i] = length;
@@ -71,6 +69,7 @@ public class Main {
 			}
 			System.out.println();
 		}
+	//Votes(votes);
 	}
 
 	public static int[][] Votes(List<Vote> list) {
@@ -105,19 +104,44 @@ public class Main {
 			}
 
 		}
+int size1=0;
+int temCurr=vote.get(0);
+int temSize=0;
+int[] sizes=new int[size];
+int s3=0;
+while(temSize<vote.size()) 
+{
+if(temCurr==vote.get(temSize)) 
+{
+	temSize++;
+	size1++;
+	sizes[s3]=size1;
+}
+else 
+{
+size1=0;
+s3++;
+temCurr=vote.get(temSize);
+}
+}
 
 		int currSize = 0;
-		int[][] eq = new int[size][vote.size()];
+		int[][] eq = new int[size][];
+		for(int i=0;i<eq.length;i++) 
+		{
+			eq[i]=new int[sizes[i]];
+			
+		}
 		int s1 = 0;
 		int s2 = 0;
 		int curr = vote.get(0);
 		while (currSize < vote.size()) {
 			if (curr == vote.get(currSize)) {
-				if(vote.get(currSize)==0) {
-				eq[s1][s2] = -1985402785;
-				}else {
-				eq[s1][s2] = vote.get(currSize);
-				}
+				
+					
+			
+					eq[s1][s2] = vote.get(currSize);
+				
 				currSize++;
 				s2++;
 			} else {
@@ -127,7 +151,6 @@ public class Main {
 				curr = vote.get(currSize);
 			}
 		}
-	
 
 		return eq;
 
