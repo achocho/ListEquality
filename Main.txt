@@ -28,50 +28,48 @@ public class Main {
 			}
 		}
 
-	
-		
 		int[][] vot = Votes(votes);
-		int len=vot[0].length;
-		int opt=vot[0][0];
-		boolean remi=false;
-		List<Integer> remi1 =new ArrayList<>();
+		int len = vot[0].length;
+		int opt = vot[0][0];
+		boolean remi = false;
+		int s = 1;
+		List<Integer> remi1 = new ArrayList<>();
 		System.out.println("Voted for :");
 		System.out.println();
 		System.out.println("--------------------------");
-		for(int i=0;i<vot.length;i++) 
-		{
-			
-			if(vot[i].length!=1) {
-			System.out.println("Option "+vot[i][0]+" :"+vot[i].length+" persons");
-			}else 
-			{
-				System.out.println("Option "+vot[i][0]+" :"+vot[i].length+" person");
-			
+		for (int i = 0; i < vot.length; i++) {
+
+			if (vot[i].length != 1) {
+				System.out.println("Option " + vot[i][0] + " :" + vot[i].length + " persons");
+			} else {
+				System.out.println("Option " + vot[i][0] + " :" + vot[i].length + " person");
+
 			}
 			System.out.println("--------------------------");
-		if(len<vot[i].length) 
-		{
-			len=vot[i].length;
-			opt=vot[i][0];
-			remi=false;
-		}else if(len==vot[i].length) 
-		{
-			remi=true;
-			remi1.add(vot[i][0]);
-		}
-		}
-		if(!remi) {
-		System.out.println("The winner is "+opt+" wiht "+len+" votes");
-		}else 
-		{
-			System.out.println("Equality between: ");
-			for(int j=1;j<remi1.size();j++) {
-			System.out.print(remi1.get(j-1)+" - ");
-		
+			if (len < vot[i].length) {
+				len = vot[i].length;
+				opt = vot[i][0];
+				remi = false;
+			} else if (len == vot[s].length) {
+				remi = true;
+				if (s < vot.length - 1) {
+					s++;
+
+				}
+				remi1.add(vot[i][0]);
 			}
-			System.out.print(remi1.get(remi1.size()-1));
-			System.out.print(" with "+len+" votes");
+		}
+		if (!remi) {
+			System.out.println("The winner is " + opt + " with " + len + " votes");
+		} else {
+			System.out.print("Equality between: ");
+			for (int j = 1; j < remi1.size(); j++) {
+				System.out.print(remi1.get(j - 1) + " - ");
+
 			}
+			System.out.print(remi1.get(remi1.size() - 1));
+			System.out.print(" with " + len + " votes");
+		}
 	}
 
 	public static int[][] Votes(List<Vote> list) {
