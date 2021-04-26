@@ -11,7 +11,7 @@ public class Main {
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
-		
+	
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -30,31 +30,32 @@ public class Main {
 		}
 
 		
+	
+		
 		
 		int[][] vot = Votes(votes);
 
 		int[] Type = new int[vot.length];
-		br: for (int i = 0; i < vot.length; i++) {
-			for (int j = 0; j < vot[i].length; j++) {
+		 for (int i = 0; i < vot.length; i++) {
+			
 				
-					Type[i] = vot[i][j];
-					continue br;
+					Type[i] = vot[i][0];
+				
 
 				
-			}
+			
 		}
 		int[] len = new int[vot.length];
-		int length = 0;
+		
 		for (int i = 0; i < vot.length; i++) {
-			for (int j = 0; j < vot[i].length; j++) {
+		
 			
-					length++;
+				len[i]=vot[i].length;
 
 				
 
-			}
-			len[i] = length;
-			length = 0;
+			
+		
 		}
 		System.out.println("--------------------------------");
 		System.out.println("Voted for :");
