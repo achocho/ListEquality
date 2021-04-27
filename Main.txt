@@ -108,7 +108,7 @@ public class Main {
 		List<Integer> equals = new ArrayList<>();
 
 		if (rem) {
-			for (int i = Min; i <= Max + 1; i++) {
+			for (int i = Min; i < vot.length; i++) {
 				equals.add(els[i]);
 
 			}
