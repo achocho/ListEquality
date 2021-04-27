@@ -10,7 +10,7 @@ public class Main {
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
-
+/*
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -27,6 +27,13 @@ public class Main {
 				Form = false;
 			}
 		}
+*/
+		
+		votes.add(new Vote("","",1));
+		votes.add(new Vote("","",1));
+		votes.add(new Vote("","",2));
+		votes.add(new Vote("","",2));
+		votes.add(new Vote("","",3));
 
 		int[][] vot = Votes(votes);
 		int len = vot[0].length;
@@ -46,30 +53,9 @@ public class Main {
 
 			}
 			System.out.println("--------------------------");
-			if (len < vot[i].length) {
-				len = vot[i].length;
-				opt = vot[i][0];
-				remi = false;
-			} else if (len == vot[s].length) {
-				remi = true;
-				if (s < vot.length - 1) {
-					s++;
-
-				}
-				remi1.add(vot[i][0]);
-			}
+			
 		}
-		if (!remi) {
-			System.out.println("The winner is " + opt + " with " + len + " votes");
-		} else {
-			System.out.print("Equality between: ");
-			for (int j = 1; j < remi1.size(); j++) {
-				System.out.print(remi1.get(j - 1) + " - ");
-
-			}
-			System.out.print(remi1.get(remi1.size() - 1));
-			System.out.print(" with " + len + " votes");
-		}
+	
 	}
 
 	public static int[][] Votes(List<Vote> list) {
