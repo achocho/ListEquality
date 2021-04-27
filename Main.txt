@@ -10,7 +10,7 @@ public class Main {
 
 		Scanner sc1 = new Scanner(System.in);
 		boolean Form = true;
-/*
+
 		while (Form) {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter name!");
@@ -27,20 +27,9 @@ public class Main {
 				Form = false;
 			}
 		}
-*/
-		
-		votes.add(new Vote("","",1));
-		votes.add(new Vote("","",1));
-		votes.add(new Vote("","",2));
-		votes.add(new Vote("","",2));
-		votes.add(new Vote("","",3));
 
 		int[][] vot = Votes(votes);
 		int len = vot[0].length;
-		int opt = vot[0][0];
-		boolean remi = false;
-		int s = 1;
-		List<Integer> remi1 = new ArrayList<>();
 		System.out.println("Voted for :");
 		System.out.println();
 		System.out.println("--------------------------");
@@ -53,9 +42,87 @@ public class Main {
 
 			}
 			System.out.println("--------------------------");
-			
+
 		}
-	
+
+		int[] sizes = new int[vot.length];
+		int[] els = new int[vot.length];
+		for (int i = 0; i < vot.length; i++) {
+			sizes[i] = vot[i].length;
+			els[i] = vot[i][0];
+		}
+
+		int buff = 0;
+		int buff1 = 0;
+		for (int i = 0; i < sizes.length - 1; i++) {
+			for (int j = 0; j < sizes.length - 1; j++) {
+				int l1 = sizes[j];
+				int l2 = sizes[j + 1];
+				if (l1 > l2) {
+					buff1 = els[j];
+					els[j] = els[j + 1];
+					els[j + 1] = buff1;
+					buff = l1;
+					sizes[j] = l2;
+					sizes[j + 1] = buff;
+
+				}
+
+			}
+
+		}
+		int len1 = 0;
+		for (int i = 0; i < sizes.length; i++) {
+			if (len1 < sizes[i]) {
+				len1 = sizes[i];
+
+			}
+
+		}
+		int Min = 0;
+		for (int i = 0; i < sizes.length; i++) {
+			if (len1 == sizes[i]) {
+				Min = i;
+				break;
+			}
+
+		}
+		int Max = 0;
+		for (int i = Min; i < sizes.length - 1; i++) {
+			if (sizes[i] == sizes[i + 1]) {
+				Max = i;
+
+			}
+
+		}
+
+		boolean rem = false;
+
+		if (len > sizes[Max]) {
+			rem = false;
+
+		} else {
+			rem = true;
+
+		}
+		List<Integer> equals = new ArrayList<>();
+		for (int i = Min; i <= Max + 1; i++) {
+			equals.add(els[i]);
+
+		}
+		if (rem) {
+			System.out.print("Equality between: ");
+			for (int i = 0; i < equals.size() - 1; i++) {
+				System.out.print(equals.get(i) + "-");
+
+			}
+			System.out.print(equals.get(equals.size() - 1));
+			System.out.print(" with " + len1 + " votes");
+		} else {
+			System.out.println("The winner is: " + els[els.length - 1] + " with " + len1 + " votes");
+
+		}
+
 	}
 
 	public static int[][] Votes(List<Vote> list) {
