@@ -98,19 +98,20 @@ public class Main {
 
 		boolean rem = false;
 
-		if (len > sizes[Max]) {
+		if (len1 > sizes[Max]) {
 			rem = false;
 
-		} else {
+		} else if (len1 == sizes[Max] && sizes.length > 1) {
 			rem = true;
 
 		}
 		List<Integer> equals = new ArrayList<>();
-		for (int i = Min; i <= Max + 1; i++) {
-			equals.add(els[i]);
 
-		}
 		if (rem) {
+			for (int i = Min; i <= Max + 1; i++) {
+				equals.add(els[i]);
+
+			}
 			System.out.print("Equality between: ");
 			for (int i = 0; i < equals.size() - 1; i++) {
 				System.out.print(equals.get(i) + "-");
